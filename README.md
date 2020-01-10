@@ -24,7 +24,7 @@ Weatherio gives you the ability to annotate photos with:
 
 <h2>Installation</h2>
 
-- [APK](https://goo.gl/idhEiM)
+- [APK](URL)
 
 <h2>Contributing</h2>
 
