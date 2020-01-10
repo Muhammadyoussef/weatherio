@@ -22,7 +22,7 @@ def versions = [
         rxlocation          : "1.0.0",
         retrofit            : '2.2.0',
         dagger              : '2.11',
-        butterKnife         : '8.6.0',
+        butterKnife         : '10.2.1',
         glide               : '4.3.0',
         timber              : '4.5.1',
         leakCanary          : '1.5.4',
