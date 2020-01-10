@@ -1,11 +1,11 @@
 package me.muhammadyoussef.weatherio.schedulers.qualifires;
 
-import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
-
 import javax.inject.Qualifier;
 
+import me.muhammadyoussef.weatherio.schedulers.ThreadSchedulers;
+
 /**
- This qualifier is used for distinguishing between different {@link ThreadSchedulers} for dependency injection.
+ * This qualifier is used for distinguishing between different {@link ThreadSchedulers} for dependency injection.
  */
 
 @Qualifier
