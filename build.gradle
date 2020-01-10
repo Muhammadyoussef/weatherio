@@ -1,3 +1,4 @@
+apply from: "$project.rootDir/tools/gradle/dependencies.gradle"
 
 buildscript {
     repositories {
