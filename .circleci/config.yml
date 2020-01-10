@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  analyzer:
+  build:
 
     docker:
       - image: circleci/android:api-29
