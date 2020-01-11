@@ -78,7 +78,7 @@ public class DiskUtils {
         return getNewDirectory("attachments");
     }
 
-    private File newImageFile(@NonNull File directory) {
+    public File newImageFile(@NonNull File directory) {
         File[] files = directory.listFiles();
         String fileName = files == null ? "1" : "" + (files.length + 1);
         return new File(directory, fileName + ".jpg");

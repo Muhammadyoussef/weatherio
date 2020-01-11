@@ -1,6 +1,5 @@
 package me.muhammadyoussef.weatherio.ui.camera;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
@@ -9,7 +8,7 @@ public interface CameraContract {
 
     interface View {
 
-        void snapPhoto();
+        void snapPhoto(Uri destination);
 
         void navigateToAnnotationScreen(@NonNull Uri photoUri);
     }
@@ -18,6 +17,6 @@ public interface CameraContract {
 
         void onCameraClicked();
 
-        void onPhotoSnapped(@NonNull Bitmap photo);
+        void onPhotoSnapped(@NonNull Uri photo);
     }
 }
