@@ -18,6 +18,7 @@ import me.muhammadyoussef.weatherio.di.activity.ActivityComponent;
 import me.muhammadyoussef.weatherio.di.activity.ActivityModule;
 import me.muhammadyoussef.weatherio.di.application.AppComponent;
 import me.muhammadyoussef.weatherio.ui.camera.CameraFragment;
+import me.muhammadyoussef.weatherio.ui.history.HistoryFragment;
 
 public class HostActivity extends AppCompatActivity implements HostContract.View,
         ComponentProvider<ActivityComponent> {
@@ -74,7 +75,12 @@ public class HostActivity extends AppCompatActivity implements HostContract.View
 
     @Override
     public void displayHistoryScreen() {
-        //TODO navigate to history
+        String tag = HistoryFragment.class.getName();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment == null) {
+            fragment = HistoryFragment.newInstance();
+        }
+        replaceFragment(fragment, tag);
     }
 
     private void replaceFragment(@NonNull Fragment fragment, @NonNull String tag) {

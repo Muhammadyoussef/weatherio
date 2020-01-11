@@ -10,6 +10,8 @@ import dagger.Provides;
 import me.muhammadyoussef.weatherio.di.qualifier.ForFragment;
 import me.muhammadyoussef.weatherio.di.scope.FragmentScope;
 import me.muhammadyoussef.weatherio.ui.camera.CameraContract;
+import me.muhammadyoussef.weatherio.ui.history.HistoryContract;
+import me.muhammadyoussef.weatherio.ui.history.HistoryDataOwner;
 
 /**
  * This class is responsible for providing the requested objects to {@link FragmentScope} annotated classes
@@ -54,5 +56,17 @@ public class FragmentModule {
     @Provides
     CameraContract.View provideCameraView() {
         return (CameraContract.View) fragment;
+    }
+
+    @FragmentScope
+    @Provides
+    HistoryContract.View provideHistoryView() {
+        return (HistoryContract.View) fragment;
+    }
+
+    @FragmentScope
+    @Provides
+    HistoryDataOwner provideHistoryDataProvider() {
+        return (HistoryDataOwner) fragment;
     }
 }
