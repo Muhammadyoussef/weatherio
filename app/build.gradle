@@ -39,6 +39,7 @@ dependencies {
     implementation deps.android.appcompat
     implementation deps.android.constraintlayout
     implementation deps.android.recyclerview
+    implementation deps.android.material
 
     // Play Services
     implementation deps.playservices.location

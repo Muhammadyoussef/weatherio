@@ -26,12 +26,14 @@ def versions = [
         glide               : '4.3.0',
         timber              : '4.5.1',
         leakCanary          : '1.5.4',
+        material            : '1.2.0-alpha03',
 ]
 
 def android = [
         appcompat       : "androidx.appcompat:appcompat:${versions.appcompat}",
         constraintlayout: "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
         recyclerview    : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
+        material        : "com.google.android.material:material:${versions.material}",
 ]
 
 def playservices = [

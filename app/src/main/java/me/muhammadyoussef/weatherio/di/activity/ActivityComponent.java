@@ -4,6 +4,7 @@ import dagger.Subcomponent;
 import me.muhammadyoussef.weatherio.di.fragment.FragmentComponent;
 import me.muhammadyoussef.weatherio.di.fragment.FragmentModule;
 import me.muhammadyoussef.weatherio.di.scope.ActivityScope;
+import me.muhammadyoussef.weatherio.ui.host.HostActivity;
 
 /**
  * This interface is used by dagger to generate the code that defines the connection between the provider of objects
@@ -15,4 +16,6 @@ import me.muhammadyoussef.weatherio.di.scope.ActivityScope;
 public interface ActivityComponent {
 
     FragmentComponent plus(FragmentModule fragmentModule);
+
+    void inject(HostActivity hostActivity);
 }

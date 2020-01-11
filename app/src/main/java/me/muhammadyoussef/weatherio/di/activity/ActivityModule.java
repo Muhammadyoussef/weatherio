@@ -7,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import me.muhammadyoussef.weatherio.di.qualifier.ForActivity;
 import me.muhammadyoussef.weatherio.di.scope.ActivityScope;
+import me.muhammadyoussef.weatherio.ui.host.HostContract;
 
 /**
  * This class is responsible for providing the requested objects to {@link ActivityScope} annotated classes
@@ -32,5 +33,11 @@ public class ActivityModule {
     @ForActivity
     Context provideActivityContext() {
         return activity;
+    }
+
+    @ActivityScope
+    @Provides
+    HostContract.View provideHostView() {
+        return (HostContract.View) activity;
     }
 }

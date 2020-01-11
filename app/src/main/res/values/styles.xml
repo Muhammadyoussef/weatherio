@@ -9,4 +9,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="HostScreenThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/colorLayoutLight</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">@color/colorHostScreenPrimary</item>
+        <item name="colorPrimaryDark">@color/colorHostScreenPrimaryDark</item>
+        <item name="colorAccent">@color/colorHostScreenAccent</item>
+    </style>
 </resources>
