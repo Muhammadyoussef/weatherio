@@ -1,11 +1,17 @@
 package me.muhammadyoussef.weatherio.ui.camera;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
+
+import java.io.File;
 
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
+import io.reactivex.Single;
+import io.reactivex.SingleSource;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Function;
 import me.muhammadyoussef.weatherio.di.scope.FragmentScope;
 import me.muhammadyoussef.weatherio.schedulers.ThreadSchedulers;
 import me.muhammadyoussef.weatherio.schedulers.qualifires.IOThread;
@@ -37,7 +43,8 @@ public class CameraPresenter implements CameraContract.Presenter {
 
     @Override
     public void onPhotoSnapped(@NonNull Bitmap photo) {
-        disposables.add(diskUtils.save(photo, diskUtils.getAttachmentsDirectory())
+        disposables.add(Single.fromCallable(diskUtils::getAttachmentsDirectory)
+                .flatMap((Function<File, SingleSource<Uri>>) file -> diskUtils.save(photo, file))
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())
                 .subscribe(view::navigateToAnnotationScreen, Timber::e));

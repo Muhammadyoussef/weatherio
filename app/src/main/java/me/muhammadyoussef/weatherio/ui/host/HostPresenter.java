@@ -17,16 +17,16 @@ public class HostPresenter implements HostContract.Presenter {
     @Override
     public void onCreate() {
         view.setupClickListeners();
-        view.setMainContent();
+        view.displayCameraScreen();
     }
 
     @Override
     public void onCameraClicked() {
-        //TODO navigate to camera
+        view.displayCameraScreen();
     }
 
     @Override
     public void onHistoryClicked() {
-        //TODO navigate to history
+        view.displayHistoryScreen();
     }
 }

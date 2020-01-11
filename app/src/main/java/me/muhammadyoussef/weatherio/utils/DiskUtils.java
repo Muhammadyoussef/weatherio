@@ -42,6 +42,7 @@ public class DiskUtils {
     private File getRootDirectory() {
         String rootDirectory = getExternalStorageRoot();
         if (rootDirectory == null) {
+            // TODO check disk access permission
             rootDirectory = getInternalStorageRoot();
         }
         File directory = new File(rootDirectory + "/" + context.getString(R.string.app_name) + "/");
