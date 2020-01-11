@@ -9,6 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 import me.muhammadyoussef.weatherio.di.qualifier.ForFragment;
 import me.muhammadyoussef.weatherio.di.scope.FragmentScope;
+import me.muhammadyoussef.weatherio.ui.camera.CameraContract;
 
 /**
  * This class is responsible for providing the requested objects to {@link FragmentScope} annotated classes
@@ -47,5 +48,11 @@ public class FragmentModule {
     @Provides
     Activity provideActivity() {
         return fragment.getActivity();
+    }
+
+    @FragmentScope
+    @Provides
+    CameraContract.View provideCameraView() {
+        return (CameraContract.View) fragment;
     }
 }

@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Weather io</string>
+    <string name="app_name">Weatherio</string>
     <string name="camera">Camera</string>
     <string name="history">History</string>
+    <string name="snap_photos">Snap Photos</string>
+    <string name="open_camera">Open camera</string>
+    <string name="snap_photos_to_annotate">Snap <b>photos</b> to start annotating</string>
 </resources>

@@ -1,12 +1,12 @@
 package me.muhammadyoussef.weatherio.ui.host;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.muhammadyoussef.weatherio.R;
@@ -15,8 +15,9 @@ import me.muhammadyoussef.weatherio.di.ComponentProvider;
 import me.muhammadyoussef.weatherio.di.activity.ActivityComponent;
 import me.muhammadyoussef.weatherio.di.activity.ActivityModule;
 import me.muhammadyoussef.weatherio.di.application.AppComponent;
+import me.muhammadyoussef.weatherio.ui.camera.CameraFragment;
 
-public class HostActivity extends Activity implements HostContract.View,
+public class HostActivity extends AppCompatActivity implements HostContract.View,
         ComponentProvider<ActivityComponent> {
 
     @BindView(R.id.bottom_navigation_view)
@@ -57,5 +58,13 @@ public class HostActivity extends Activity implements HostContract.View,
                     return false;
             }
         });
+    }
+
+    @Override
+    public void setMainContent() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, CameraFragment.newInstance())
+                .commit();
     }
 }

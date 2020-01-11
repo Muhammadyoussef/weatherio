@@ -18,4 +18,10 @@
 
     <!--Splash-->
     <dimen name="sizeSplashLogo">80dp</dimen>
+
+    <!--Camera-->
+    <dimen name="padding_camera_button_top">@dimen/padding_default</dimen>
+    <dimen name="padding_camera_button_bottom">@dimen/padding_default</dimen>
+    <dimen name="padding_camera_button_start">80dp</dimen>
+    <dimen name="padding_camera_button_end">80dp</dimen>
 </resources>

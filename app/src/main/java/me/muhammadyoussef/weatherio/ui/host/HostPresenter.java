@@ -17,6 +17,7 @@ public class HostPresenter implements HostContract.Presenter {
     @Override
     public void onCreate() {
         view.setupClickListeners();
+        view.setMainContent();
     }
 
     @Override
