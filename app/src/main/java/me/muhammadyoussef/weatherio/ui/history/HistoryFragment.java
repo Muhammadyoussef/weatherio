@@ -20,6 +20,7 @@ import me.muhammadyoussef.weatherio.R;
 import me.muhammadyoussef.weatherio.di.ComponentProvider;
 import me.muhammadyoussef.weatherio.di.activity.ActivityComponent;
 import me.muhammadyoussef.weatherio.di.fragment.FragmentModule;
+import me.muhammadyoussef.weatherio.ui.details.DetailsActivityArgs;
 import me.muhammadyoussef.weatherio.ui.history.data.FileViewModel;
 
 public class HistoryFragment extends Fragment implements HistoryContract.View, HistoryDataOwner {
@@ -63,12 +64,7 @@ public class HistoryFragment extends Fragment implements HistoryContract.View, H
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         setupRecyclerView();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        presenter.onResume();
+        presenter.onViewCreated();
     }
 
     private void setupRecyclerView() {
@@ -89,7 +85,10 @@ public class HistoryFragment extends Fragment implements HistoryContract.View, H
 
     @Override
     public void onItemClicked(FileViewModel item) {
-        //TODO navigate to details screen
+        if (getContext() != null) {
+            new DetailsActivityArgs(item.getThumbnail())
+                    .launch(getContext());
+        }
     }
 
     @Override

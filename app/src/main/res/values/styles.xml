@@ -18,6 +18,12 @@
         <item name="colorAccent">@color/colorHostScreenAccent</item>
     </style>
 
+    <style name="DetailsScreenThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+    </style>
+
     <style name="ScreenTextViewTitleStyle" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/colorTextPrimaryDark</item>
         <item name="android:textSize">@dimen/textSizeTitle</item>
