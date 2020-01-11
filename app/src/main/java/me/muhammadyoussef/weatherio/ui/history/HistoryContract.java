@@ -12,7 +12,7 @@ public interface HistoryContract {
 
     interface Presenter {
 
-        void onResume();
+        void onViewCreated();
 
         int getItemCount();
 

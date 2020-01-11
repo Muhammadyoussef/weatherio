@@ -23,6 +23,9 @@
         <activity
             android:name=".ui.host.HostActivity"
             android:theme="@style/HostScreenThemeLight" />
+        <activity
+            android:name=".ui.details.DetailsActivity"
+            android:theme="@style/DetailsScreenThemeLight" />
     </application>
 
 </manifest>

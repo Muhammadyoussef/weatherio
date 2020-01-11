@@ -47,7 +47,7 @@ class HistoryPresenter implements HistoryContract.Presenter {
     }
 
     @Override
-    public void onResume() {
+    public void onViewCreated() {
         disposables.add(Single.fromCallable(diskUtils::getAttachmentsDirectory)
                 .map(File::listFiles)
                 .filter(Objects::nonNull)
