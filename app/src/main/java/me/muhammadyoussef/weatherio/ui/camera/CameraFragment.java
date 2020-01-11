@@ -2,7 +2,6 @@ package me.muhammadyoussef.weatherio.ui.camera;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -67,16 +66,17 @@ public class CameraFragment extends Fragment implements CameraContract.View {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SNAP_PHOTO_REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getExtras() != null) {
-            Object result = data.getExtras().get("data");
-            if (result instanceof Bitmap) {
-                presenter.onPhotoSnapped((Bitmap) result);
+            Object result = data.getExtras().get(MediaStore.EXTRA_OUTPUT);
+            if (result instanceof Uri) {
+                presenter.onPhotoSnapped((Uri) result);
             }
         }
     }
 
     @Override
-    public void snapPhoto() {
+    public void snapPhoto(Uri destination) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, destination);
         startActivityForResult(intent, SNAP_PHOTO_REQUEST_CODE);
     }
 
