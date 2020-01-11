@@ -17,4 +17,40 @@
         <item name="colorPrimaryDark">@color/colorHostScreenPrimaryDark</item>
         <item name="colorAccent">@color/colorHostScreenAccent</item>
     </style>
+
+    <style name="ScreenTextViewTitleStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorTextPrimaryDark</item>
+        <item name="android:textSize">@dimen/textSizeTitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/padding_default</item>
+    </style>
+
+    <style name="ScreenTextViewHintStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorTextSecondaryLight</item>
+        <item name="android:textSize">@dimen/textSizeBody</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/padding_small</item>
+    </style>
+
+    <style name="SnapPhotoCornerStyle">
+        <item name="android:alpha">0.3</item>
+        <item name="android:src">@drawable/ic_corner</item>
+    </style>
+
+    <style name="CameraButtonStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorTextPrimaryLight</item>
+        <item name="android:textSize">@dimen/textSizeBody</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:background">@drawable/shape_rounded_rectangle</item>
+        <item name="android:drawableStart">@drawable/ic_camera</item>
+        <item name="android:paddingTop">@dimen/padding_camera_button_top</item>
+        <item name="android:paddingBottom">@dimen/padding_camera_button_bottom</item>
+        <item name="android:paddingStart">@dimen/padding_camera_button_start</item>
+        <item name="android:paddingEnd">@dimen/padding_camera_button_end</item>
+        <item name="android:drawablePadding">@dimen/padding_small</item>
+    </style>
 </resources>

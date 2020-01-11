@@ -4,6 +4,8 @@ public interface HostContract {
 
     interface View {
         void setupClickListeners();
+
+        void setMainContent();
     }
 
     interface Presenter {
