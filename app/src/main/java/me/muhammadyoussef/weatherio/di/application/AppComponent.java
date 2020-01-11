@@ -1,6 +1,7 @@
 package me.muhammadyoussef.weatherio.di.application;
 
 import dagger.Component;
+import me.muhammadyoussef.weatherio.WeatherioApp;
 import me.muhammadyoussef.weatherio.di.activity.ActivityComponent;
 import me.muhammadyoussef.weatherio.di.activity.ActivityModule;
 import me.muhammadyoussef.weatherio.di.scope.ApplicationScope;
@@ -15,4 +16,6 @@ import me.muhammadyoussef.weatherio.di.scope.ApplicationScope;
 public interface AppComponent {
 
     ActivityComponent plus(ActivityModule activityModule);
+
+    void inject(WeatherioApp weatherioApp);
 }

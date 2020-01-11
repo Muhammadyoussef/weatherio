@@ -27,6 +27,7 @@ public class WeatherioApp extends Application implements ComponentProvider<AppCo
     @Override
     public void onCreate() {
         super.onCreate();
+        appComponent.inject(this);
         setStrictModeEnabledForDebug();
         setupTimberTree();
         installLeakCanary();
