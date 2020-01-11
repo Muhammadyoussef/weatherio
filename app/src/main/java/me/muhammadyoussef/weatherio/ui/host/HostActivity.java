@@ -6,7 +6,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.muhammadyoussef.weatherio.R;
@@ -61,10 +63,24 @@ public class HostActivity extends AppCompatActivity implements HostContract.View
     }
 
     @Override
-    public void setMainContent() {
+    public void displayCameraScreen() {
+        String tag = CameraFragment.class.getName();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment == null) {
+            fragment = CameraFragment.newInstance();
+        }
+        replaceFragment(fragment, tag);
+    }
+
+    @Override
+    public void displayHistoryScreen() {
+        //TODO navigate to history
+    }
+
+    private void replaceFragment(@NonNull Fragment fragment, @NonNull String tag) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, CameraFragment.newInstance())
+                .replace(R.id.fragment_container, fragment, tag)
                 .commit();
     }
 }

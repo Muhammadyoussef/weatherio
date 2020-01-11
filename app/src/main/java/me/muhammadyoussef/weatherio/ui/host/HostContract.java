@@ -5,7 +5,9 @@ public interface HostContract {
     interface View {
         void setupClickListeners();
 
-        void setMainContent();
+        void displayCameraScreen();
+
+        void displayHistoryScreen();
     }
 
     interface Presenter {
