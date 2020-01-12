@@ -3,6 +3,8 @@ package me.muhammadyoussef.weatherio.di.activity;
 import android.app.Activity;
 import android.content.Context;
 
+import com.patloew.rxlocation.RxLocation;
+
 import dagger.Module;
 import dagger.Provides;
 import me.muhammadyoussef.weatherio.di.qualifier.ForActivity;
@@ -53,5 +55,11 @@ public class ActivityModule {
     @Provides
     WeatherDataOwner provideDataOwnerView() {
         return (WeatherDataOwner) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    RxLocation provideRxLocation() {
+        return new RxLocation(activity.getApplicationContext());
     }
 }

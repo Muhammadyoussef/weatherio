@@ -17,7 +17,7 @@ public class OpenWeatherStore {
         this.apIsUtil = apIsUtil;
     }
 
-    public Single<WeatherApiResponse> fetchWeatherData(String latitude, String longitude) {
+    public Single<WeatherApiResponse> fetchWeatherData(double latitude, double longitude) {
         return apIsUtil.getAPIService()
                 .fetchWeatherData(latitude, longitude);
     }

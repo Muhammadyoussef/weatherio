@@ -8,25 +8,36 @@ import javax.inject.Inject;
 
 import me.muhammadyoussef.weatherio.di.scope.FragmentScope;
 import me.muhammadyoussef.weatherio.utils.DiskUtils;
+import me.muhammadyoussef.weatherio.utils.PermissionUtil;
 
 @FragmentScope
 public class CameraPresenter implements CameraContract.Presenter {
 
+    private final PermissionUtil permissionUtil;
     private final CameraContract.View view;
     private final DiskUtils diskUtils;
     private Uri imageUri;
 
     @Inject
-    CameraPresenter(CameraContract.View view, DiskUtils diskUtils) {
+    CameraPresenter(PermissionUtil permissionUtil, CameraContract.View view, DiskUtils diskUtils) {
+        this.permissionUtil = permissionUtil;
         this.diskUtils = diskUtils;
         this.view = view;
     }
 
     @Override
     public void onCameraClicked() {
-        File destination = diskUtils.newImageFile(diskUtils.getAttachmentsDirectory());
-        imageUri = Uri.fromFile(destination);
-        view.snapPhoto(imageUri);
+        if (permissionUtil.hasLocationPermission()) {
+            if (permissionUtil.isGPSEnabled()) {
+                File destination = diskUtils.newImageFile(diskUtils.getAttachmentsDirectory());
+                imageUri = Uri.fromFile(destination);
+                view.snapPhoto(imageUri);
+            } else {
+                view.showGPSWarning();
+            }
+        } else {
+            permissionUtil.requestLocationPermission();
+        }
     }
 
     @Override

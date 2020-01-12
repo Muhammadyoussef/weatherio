@@ -11,6 +11,8 @@ public interface CameraContract {
         void snapPhoto(Uri destination);
 
         void navigateToAnnotationScreen(@NonNull Uri photoUri);
+
+        void showGPSWarning();
     }
 
     interface Presenter {

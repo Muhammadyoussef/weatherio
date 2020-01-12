@@ -15,4 +15,5 @@
     <string name="location">Location</string>
     <string name="save">Save</string>
     <string name="no_weather_data_is_available">No weather data is available. <b>Click</b> to retry</string>
+    <string name="gps_warning">Location is turned off.  To use location tags, turn on location in the quick settings panel.</string>
 </resources>

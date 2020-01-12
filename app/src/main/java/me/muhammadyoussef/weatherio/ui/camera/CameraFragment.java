@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -84,6 +85,11 @@ public class CameraFragment extends Fragment implements CameraContract.View {
             new AnnotationActivityArgs(photoUri)
                     .launch(getContext());
         }
+    }
+
+    @Override
+    public void showGPSWarning() {
+        Toast.makeText(getContext(), getString(R.string.gps_warning), Toast.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.btn_camera)
