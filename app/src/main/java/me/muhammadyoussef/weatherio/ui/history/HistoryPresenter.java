@@ -72,4 +72,9 @@ class HistoryPresenter implements HistoryContract.Presenter {
     public FileViewModel getItem(int position) {
         return filesRelay.getValue().get(position);
     }
+
+    @Override
+    public void onDestroy() {
+        disposables.clear();
+    }
 }

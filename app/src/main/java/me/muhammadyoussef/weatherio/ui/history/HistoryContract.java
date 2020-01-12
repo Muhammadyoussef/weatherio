@@ -17,5 +17,7 @@ public interface HistoryContract {
         int getItemCount();
 
         FileViewModel getItem(int position);
+
+        void onDestroy();
     }
 }

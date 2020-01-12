@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,12 +29,15 @@
         </activity>
         <activity
             android:name=".ui.host.HostActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/HostScreenThemeLight" />
         <activity
             android:name=".ui.details.DetailsActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/DetailsScreenThemeLight" />
         <activity
             android:name=".ui.annotation.AnnotationActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AnnotationScreenTheme" />
     </application>
 
