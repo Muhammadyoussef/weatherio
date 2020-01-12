@@ -20,6 +20,7 @@ import me.muhammadyoussef.weatherio.R;
 import me.muhammadyoussef.weatherio.di.ComponentProvider;
 import me.muhammadyoussef.weatherio.di.activity.ActivityComponent;
 import me.muhammadyoussef.weatherio.di.fragment.FragmentModule;
+import me.muhammadyoussef.weatherio.ui.annotation.AnnotationActivityArgs;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -65,11 +66,8 @@ public class CameraFragment extends Fragment implements CameraContract.View {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SNAP_PHOTO_REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getExtras() != null) {
-            Object result = data.getExtras().get(MediaStore.EXTRA_OUTPUT);
-            if (result instanceof Uri) {
-                presenter.onPhotoSnapped((Uri) result);
-            }
+        if (requestCode == SNAP_PHOTO_REQUEST_CODE && resultCode == RESULT_OK) {
+            presenter.onPhotoSnapped();
         }
     }
 
@@ -82,7 +80,10 @@ public class CameraFragment extends Fragment implements CameraContract.View {
 
     @Override
     public void navigateToAnnotationScreen(@NonNull Uri photoUri) {
-        //TODO navigate to annotation screen
+        if (getContext() != null) {
+            new AnnotationActivityArgs(photoUri)
+                    .launch(getContext());
+        }
     }
 
     @OnClick(R.id.btn_camera)

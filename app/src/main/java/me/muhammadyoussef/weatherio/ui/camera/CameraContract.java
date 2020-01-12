@@ -17,6 +17,6 @@ public interface CameraContract {
 
         void onCameraClicked();
 
-        void onPhotoSnapped(@NonNull Uri photo);
+        void onPhotoSnapped();
     }
 }

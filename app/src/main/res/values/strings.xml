@@ -6,4 +6,13 @@
     <string name="open_camera">Open camera</string>
     <string name="snap_photos_to_annotate">Snap <b>photos</b> to start annotating</string>
     <string name="photo">Photo</string>
+    <string name="add_info">Edit photo</string>
+    <string name="fetching">Fetching…</string>
+    <string name="network_failure">Couldn\'t fetch data</string>
+    <string name="temp">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="condition">Condition</string>
+    <string name="location">Location</string>
+    <string name="save">Save</string>
+    <string name="no_weather_data_is_available">No weather data is available. <b>Click</b> to retry</string>
 </resources>

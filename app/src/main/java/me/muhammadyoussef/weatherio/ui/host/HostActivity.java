@@ -44,6 +44,11 @@ public class HostActivity extends AppCompatActivity implements HostContract.View
 
     @Override
     public ActivityComponent getComponent() {
+        if (activityComponent == null) {
+            AppComponent appComponent = WeatherioApp.getComponent(getApplicationContext());
+            activityComponent = appComponent.plus(new ActivityModule(this));
+            activityComponent.inject(this);
+        }
         return activityComponent;
     }
 

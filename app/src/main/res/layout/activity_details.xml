@@ -15,6 +15,9 @@
         android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/padding_default"
         android:src="@drawable/ic_back"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintBottom_toTopOf="@+id/iv_photo"
+        app:layout_constraintEnd_toStartOf="@id/iv_share"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -28,7 +31,9 @@
         android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/padding_default"
         android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toTopOf="@id/iv_photo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_back"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
@@ -39,6 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_back"
         tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

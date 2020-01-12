@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <Button
+        android:id="@+id/btn_save"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:text="@string/save"
+        android:textColor="@color/colorTextPrimaryLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_photo_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_save">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_xlarge"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:drawableStart="@drawable/ic_temp"
+            android:drawablePadding="@dimen/padding_small"
+            android:textColor="@color/colorTextPrimaryLight"
+            android:textSize="@dimen/textSizeBody"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/tv_condition"
+            app:layout_constraintEnd_toStartOf="@id/tv_himidity"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_goneMarginBottom="@dimen/margin_small"
+            app:layout_goneMarginEnd="@dimen/margin_default"
+            tools:text="22 °C"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_himidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_xlarge"
+            android:drawableStart="@drawable/ic_humidity"
+            android:drawablePadding="@dimen/padding_small"
+            android:textColor="@color/colorTextPrimaryLight"
+            android:textSize="@dimen/textSizeBody"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+            app:layout_constraintEnd_toStartOf="@id/tv_location"
+            app:layout_constraintStart_toEndOf="@+id/tv_temp"
+            app:layout_constraintTop_toTopOf="@id/tv_temp"
+            app:layout_goneMarginEnd="0dp"
+            tools:text="20 %"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="@dimen/padding_small"
+            android:textColor="@color/colorTextPrimaryLight"
+            android:textSize="@dimen/textSizeBody"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/tv_himidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_himidity"
+            app:layout_constraintTop_toTopOf="@id/tv_himidity"
+            tools:text="Helwan"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_condition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/padding_small"
+            android:textColor="@color/colorTextPrimaryLight"
+            android:textSize="@dimen/textSizeBody"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_location"
+            app:layout_constraintStart_toStartOf="@id/tv_temp"
+            app:layout_constraintTop_toBottomOf="@id/tv_temp"
+            tools:text="Rainy and cloudy"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

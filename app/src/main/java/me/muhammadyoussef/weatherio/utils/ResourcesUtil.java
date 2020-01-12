@@ -1,26 +1,21 @@
 package me.muhammadyoussef.weatherio.utils;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 
 import javax.inject.Inject;
 
 import androidx.annotation.StringRes;
-import me.muhammadyoussef.weatherio.di.qualifier.ForActivity;
-import me.muhammadyoussef.weatherio.di.scope.ActivityScope;
+import me.muhammadyoussef.weatherio.di.qualifier.ForApplication;
+import me.muhammadyoussef.weatherio.di.scope.ApplicationScope;
 
-@ActivityScope
+@ApplicationScope
 public class ResourcesUtil {
 
     private final Context context;
 
     @Inject
-    public ResourcesUtil(@ForActivity Context context) {
+    public ResourcesUtil(@ForApplication Context context) {
         this.context = context;
-    }
-
-    public LayoutInflater getLayoutInflater() {
-        return LayoutInflater.from(context);
     }
 
     public String getString(@StringRes int resourceId) {

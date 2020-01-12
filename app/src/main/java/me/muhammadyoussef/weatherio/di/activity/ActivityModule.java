@@ -7,6 +7,8 @@ import dagger.Module;
 import dagger.Provides;
 import me.muhammadyoussef.weatherio.di.qualifier.ForActivity;
 import me.muhammadyoussef.weatherio.di.scope.ActivityScope;
+import me.muhammadyoussef.weatherio.ui.annotation.AnnotationContract;
+import me.muhammadyoussef.weatherio.ui.annotation.WeatherDataOwner;
 import me.muhammadyoussef.weatherio.ui.host.HostContract;
 
 /**
@@ -39,5 +41,17 @@ public class ActivityModule {
     @Provides
     HostContract.View provideHostView() {
         return (HostContract.View) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    AnnotationContract.View provideAnnotationView() {
+        return (AnnotationContract.View) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    WeatherDataOwner provideDataOwnerView() {
+        return (WeatherDataOwner) activity;
     }
 }

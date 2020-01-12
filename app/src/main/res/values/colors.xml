@@ -22,4 +22,8 @@
 
     <!--History-->
     <color name="colorCardBackground">#ffffff</color>
+
+    <!--Weather Info-->
+    <color name="colorCheckedActive">#49d295</color>
+    <color name="colorCheckedInactive">#9E9E9E</color>
 </resources>
