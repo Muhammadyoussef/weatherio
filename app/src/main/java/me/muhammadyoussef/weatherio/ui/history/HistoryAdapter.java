@@ -1,6 +1,8 @@
 package me.muhammadyoussef.weatherio.ui.history;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,19 +18,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.muhammadyoussef.weatherio.R;
+import me.muhammadyoussef.weatherio.di.qualifier.ForFragment;
 import me.muhammadyoussef.weatherio.di.scope.FragmentScope;
 import me.muhammadyoussef.weatherio.ui.history.data.FileViewModel;
-import me.muhammadyoussef.weatherio.utils.ResourcesUtil;
 
 @FragmentScope
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
-    private final ResourcesUtil resourcesUtil;
+    private final LayoutInflater layoutInflater;
     private final HistoryDataOwner dataOwner;
 
     @Inject
-    HistoryAdapter(ResourcesUtil resourcesUtil, HistoryDataOwner dataOwner) {
-        this.resourcesUtil = resourcesUtil;
+    HistoryAdapter(@ForFragment Context context, HistoryDataOwner dataOwner) {
+        this.layoutInflater = LayoutInflater.from(context);
         this.dataOwner = dataOwner;
     }
 
@@ -37,7 +39,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout = R.layout.item_history;
         ConstraintLayout root = new ConstraintLayout(parent.getContext());
-        return new ViewHolder(resourcesUtil.getLayoutInflater().inflate(layout, root, false));
+        return new ViewHolder(layoutInflater.inflate(layout, root, false));
     }
 
     @Override

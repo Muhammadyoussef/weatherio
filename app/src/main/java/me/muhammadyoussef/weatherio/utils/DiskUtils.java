@@ -28,13 +28,12 @@ public class DiskUtils {
         this.context = context;
     }
 
-    public Single<Uri> save(@NonNull Bitmap bitmap, @NonNull File folder) {
+    public Single<Uri> save(@NonNull Bitmap bitmap, @NonNull File destination) {
         return Single.create(e -> {
-            File newFile = newImageFile(folder);
-            BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(newFile));
+            BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(destination));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.close();
-            Uri uri = Uri.fromFile(newFile);
+            Uri uri = Uri.fromFile(destination);
             e.onSuccess(uri);
         });
     }

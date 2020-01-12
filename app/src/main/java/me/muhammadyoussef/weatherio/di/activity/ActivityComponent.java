@@ -4,6 +4,7 @@ import dagger.Subcomponent;
 import me.muhammadyoussef.weatherio.di.fragment.FragmentComponent;
 import me.muhammadyoussef.weatherio.di.fragment.FragmentModule;
 import me.muhammadyoussef.weatherio.di.scope.ActivityScope;
+import me.muhammadyoussef.weatherio.ui.annotation.AnnotationActivity;
 import me.muhammadyoussef.weatherio.ui.host.HostActivity;
 
 /**
@@ -18,4 +19,6 @@ public interface ActivityComponent {
     FragmentComponent plus(FragmentModule fragmentModule);
 
     void inject(HostActivity hostActivity);
+
+    void inject(AnnotationActivity annotationActivity);
 }

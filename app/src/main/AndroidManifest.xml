@@ -4,6 +4,9 @@
     package="me.muhammadyoussef.weatherio"
     tools:ignore="GoogleAppIndexingWarning">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".WeatherioApp"
         android:allowBackup="true"
@@ -26,6 +29,9 @@
         <activity
             android:name=".ui.details.DetailsActivity"
             android:theme="@style/DetailsScreenThemeLight" />
+        <activity
+            android:name=".ui.annotation.AnnotationActivity"
+            android:theme="@style/AnnotationScreenTheme" />
     </application>
 
 </manifest>

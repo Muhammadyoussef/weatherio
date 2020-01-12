@@ -6,7 +6,6 @@ import java.io.File;
 
 import javax.inject.Inject;
 
-import androidx.annotation.NonNull;
 import me.muhammadyoussef.weatherio.di.scope.FragmentScope;
 import me.muhammadyoussef.weatherio.utils.DiskUtils;
 
@@ -15,6 +14,7 @@ public class CameraPresenter implements CameraContract.Presenter {
 
     private final CameraContract.View view;
     private final DiskUtils diskUtils;
+    private Uri imageUri;
 
     @Inject
     CameraPresenter(CameraContract.View view, DiskUtils diskUtils) {
@@ -25,11 +25,14 @@ public class CameraPresenter implements CameraContract.Presenter {
     @Override
     public void onCameraClicked() {
         File destination = diskUtils.newImageFile(diskUtils.getAttachmentsDirectory());
-        view.snapPhoto(Uri.fromFile(destination));
+        imageUri = Uri.fromFile(destination);
+        view.snapPhoto(imageUri);
     }
 
     @Override
-    public void onPhotoSnapped(@NonNull Uri photo) {
-        view.navigateToAnnotationScreen(photo);
+    public void onPhotoSnapped() {
+        if (imageUri != null) {
+            view.navigateToAnnotationScreen(imageUri);
+        }
     }
 }
