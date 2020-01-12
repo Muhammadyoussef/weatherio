@@ -69,6 +69,12 @@ public class AnnotationActivity extends AppCompatActivity implements AnnotationC
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
     public void setupViews() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         recyclerView.setHasFixedSize(true);

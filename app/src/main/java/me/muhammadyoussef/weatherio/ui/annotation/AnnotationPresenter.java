@@ -79,6 +79,11 @@ public class AnnotationPresenter implements AnnotationContract.Presenter, Weathe
     }
 
     @Override
+    public void onDestroy() {
+        disposables.clear();
+    }
+
+    @Override
     public int getItemCount() {
         return weatherRelay.getValue().size();
     }

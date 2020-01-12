@@ -47,5 +47,7 @@ public interface AnnotationContract {
         void onSaveClicked(Bitmap captureBitmap);
 
         void onReloadClicked();
+
+        void onDestroy();
     }
 }
