@@ -1,6 +1,6 @@
 # Weatherio
 
-Weatherio is a fun app for annotating and sharing photos
+Weatherio is a fun app for annotating and sharing photos with current weather data
 
 [![CircleCI](https://circleci.com/gh/Muhammadyoussef/weatherio.svg?style=svg&circle-token=a3c92f89946748e28d5cc41dd6fcf619a4c6c690)](https://circleci.com/gh/Muhammadyoussef/weatherio)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
