@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -159,6 +160,11 @@ public class AnnotationActivity extends AppCompatActivity implements AnnotationC
     @Override
     public void hideCondition() {
         conditionTextView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void showGPSWarning() {
+        Toast.makeText(getApplicationContext(), getString(R.string.gps_warning), Toast.LENGTH_LONG).show();
     }
 
     @Override

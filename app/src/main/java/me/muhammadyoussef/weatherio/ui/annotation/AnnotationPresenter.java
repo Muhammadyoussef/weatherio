@@ -1,8 +1,11 @@
 package me.muhammadyoussef.weatherio.ui.annotation;
 
 import android.graphics.Bitmap;
+import android.util.Pair;
 
+import com.google.android.gms.location.LocationRequest;
 import com.jakewharton.rxrelay2.BehaviorRelay;
+import com.patloew.rxlocation.RxLocation;
 
 import java.io.File;
 import java.util.Collections;
@@ -19,6 +22,7 @@ import me.muhammadyoussef.weatherio.store.model.weather.WeatherConditionItem;
 import me.muhammadyoussef.weatherio.store.model.weather.WeatherItemType;
 import me.muhammadyoussef.weatherio.store.model.weather.WeatherMapper;
 import me.muhammadyoussef.weatherio.utils.DiskUtils;
+import me.muhammadyoussef.weatherio.utils.PermissionUtil;
 import timber.log.Timber;
 
 @ActivityScope
@@ -27,23 +31,28 @@ public class AnnotationPresenter implements AnnotationContract.Presenter, Weathe
     private final BehaviorRelay<List<WeatherConditionItem>> weatherRelay;
     private final ThreadSchedulers threadSchedulers;
     private final CompositeDisposable disposables;
+    private final PermissionUtil permissionUtil;
     private final OpenWeatherStore weatherStore;
     private final AnnotationContract.View view;
     private final WeatherMapper weatherMapper;
+    private final RxLocation rxLocation;
     private final DiskUtils diskUtils;
     private AnnotationActivityArgs activityArgs;
 
     @Inject
     AnnotationPresenter(@IOThread ThreadSchedulers threadSchedulers,
-                        AnnotationContract.View view,
+                        PermissionUtil permissionUtil, AnnotationContract.View view,
                         OpenWeatherStore weatherStore,
                         WeatherMapper weatherMapper,
+                        RxLocation rxLocation,
                         DiskUtils diskUtils) {
+        this.permissionUtil = permissionUtil;
         this.weatherRelay = BehaviorRelay.createDefault(Collections.emptyList());
         this.disposables = new CompositeDisposable();
         this.threadSchedulers = threadSchedulers;
         this.weatherMapper = weatherMapper;
         this.weatherStore = weatherStore;
+        this.rxLocation = rxLocation;
         this.diskUtils = diskUtils;
         this.view = view;
     }
@@ -53,7 +62,7 @@ public class AnnotationPresenter implements AnnotationContract.Presenter, Weathe
         this.activityArgs = activityArgs;
         view.setupViews();
         view.loadPhoto(activityArgs.getPhotoUri());
-        fetch();
+        fetchChecked();
     }
 
     @Override
@@ -66,7 +75,7 @@ public class AnnotationPresenter implements AnnotationContract.Presenter, Weathe
 
     @Override
     public void onReloadClicked() {
-        fetch();
+        fetchChecked();
     }
 
     @Override
@@ -88,9 +97,27 @@ public class AnnotationPresenter implements AnnotationContract.Presenter, Weathe
         }
     }
 
+    private void fetchChecked() {
+        if (permissionUtil.hasLocationPermission()) {
+            if (permissionUtil.isGPSEnabled()) {
+                fetch();
+            } else {
+                view.showGPSWarning();
+                view.showNetworkFailureHint();
+            }
+        } else {
+            permissionUtil.requestLocationPermission();
+            view.showNetworkFailureHint();
+        }
+    }
+
     private void fetch() {
-        // TODO get current user's location
-        disposables.add(weatherStore.fetchWeatherData("29.847720", "31.337962")
+        LocationRequest locationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setNumUpdates(1);
+        disposables.add(rxLocation.location().updates(locationRequest)
+                .map(location -> new Pair<>(location.getLatitude(), location.getLongitude()))
+                .flatMapSingle(latLongPair -> weatherStore.fetchWeatherData(latLongPair.first, latLongPair.second))
                 .map(weatherMapper::toViewModels)
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())

@@ -36,6 +36,8 @@ public interface AnnotationContract {
         void hideLocation();
 
         void hideCondition();
+
+        void showGPSWarning();
     }
 
     interface Presenter {
